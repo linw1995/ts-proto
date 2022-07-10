@@ -280,7 +280,10 @@ function createObservableUnaryMethod(ctx: Context): Code {
           debug: this.options.debug,
           onEnd: (next) => {
             if (next.status !== 0) {
-              observer.error({ code: next.status, message: next.statusMessage });
+              const err = new Error(next.statusMessage) as any;
+              err.code = next.status;
+              err.metadata = next.trailers;
+              observer.error(err);
             } else {
               observer.next(next.message as any);
               observer.complete();
@@ -322,7 +325,9 @@ function createInvokeMethod(ctx: Context) {
               } else if (upStreamCodes.includes(code)) {
                 setTimeout(upStream, DEFAULT_TIMEOUT_TIME);
               } else {
-                observer.error(new Error(\`Error \${code} \${message}\`));
+                const err = new Error(message) as any;
+                err.code = code;
+                observer.error(err);
               }
             },
           });
