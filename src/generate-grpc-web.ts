@@ -310,7 +310,7 @@ function createInvokeMethod(ctx: Context) {
       metadata && this.options.metadata
         ? new ${BrowserHeaders}({ ...this.options?.metadata.headersMap, ...metadata?.headersMap })
         : metadata || this.options.metadata;
-      return new Observable(observer => {
+      return new ${code`${imp('Observable@rxjs')}`}(observer => {
         const upStream = (() => {
           const client = ${grpc}.invoke(methodDesc, {
             host: this.host,
