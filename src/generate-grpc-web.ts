@@ -319,7 +319,7 @@ function createInvokeMethod(ctx: Context) {
             metadata: maybeCombinedMetadata,
             debug: this.options.debug,
             onMessage: (next) => observer.next(next),
-            onEnd: (code: ${grpc}.Code, message: string) => {
+            onEnd: (code: ${grpc}.Code, message: string, trailers: ${grpc}.Metadata) => {
               if (code === 0) {
                 observer.complete();
               } else if (upStreamCodes.includes(code)) {
@@ -327,6 +327,7 @@ function createInvokeMethod(ctx: Context) {
               } else {
                 const err = new Error(message) as any;
                 err.code = code;
+                err.metadata = trailers;
                 observer.error(err);
               }
             },
