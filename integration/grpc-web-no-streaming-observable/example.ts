@@ -354,6 +354,13 @@ interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any>
 
 type UnaryMethodDefinitionish = UnaryMethodDefinitionishR;
 
+interface MethodDefinitionishR extends grpc.MethodDefinition<any, any> {
+  requestStream: any;
+  responseStream: any;
+}
+
+type MethodDefinitionish = MethodDefinitionishR;
+
 interface Rpc {
   unary<T extends UnaryMethodDefinitionish>(
     methodDesc: T,
@@ -369,6 +376,7 @@ export class GrpcWebImpl {
 
     debug?: boolean;
     metadata?: grpc.Metadata;
+    upStreamRetryCodes?: number[];
   };
 
   constructor(
@@ -378,6 +386,7 @@ export class GrpcWebImpl {
 
       debug?: boolean;
       metadata?: grpc.Metadata;
+      upStreamRetryCodes?: number[];
     }
   ) {
     this.host = host;

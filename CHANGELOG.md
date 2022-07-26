@@ -1,3 +1,31 @@
+# [1.120.0](https://github.com/stephenh/ts-proto/compare/v1.119.0...v1.120.0) (2022-07-21)
+
+
+### Features
+
+* add meta-data to stream error ([#620](https://github.com/stephenh/ts-proto/issues/620)) ([b68f301](https://github.com/stephenh/ts-proto/commit/b68f301b5fb4222a3fce676a7e5036cf00e77e11))
+
+# [1.119.0](https://github.com/stephenh/ts-proto/compare/v1.118.0...v1.119.0) (2022-07-21)
+
+
+### Features
+
+* support grpc-web client straming ([#617](https://github.com/stephenh/ts-proto/issues/617)) ([d3e7f1f](https://github.com/stephenh/ts-proto/commit/d3e7f1f4aac12db87c54d6357e557a351c96a2ca))
+
+# [1.118.0](https://github.com/stephenh/ts-proto/compare/v1.117.1...v1.118.0) (2022-07-19)
+
+
+### Features
+
+* add dynamic upStreamCodes option ([#618](https://github.com/stephenh/ts-proto/issues/618)) ([3091023](https://github.com/stephenh/ts-proto/commit/309102313273e09aef3a8480f4b46360ad82adaa))
+
+## [1.117.1](https://github.com/stephenh/ts-proto/compare/v1.117.0...v1.117.1) (2022-07-16)
+
+
+### Bug Fixes
+
+* import protobufjs/minimal with importSuffix ([#616](https://github.com/stephenh/ts-proto/issues/616)) ([b86291c](https://github.com/stephenh/ts-proto/commit/b86291c58b1cb9d4064944a6371e928b564aef7f))
+
 # [1.117.0](https://github.com/stephenh/ts-proto/compare/v1.116.1...v1.117.0) (2022-07-05)
 
 
