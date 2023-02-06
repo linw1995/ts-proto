@@ -1,8 +1,8 @@
 /* eslint-disable */
-import { Timestamp } from './google/protobuf/timestamp';
-import * as _m0 from 'protobufjs/minimal';
+import * as _m0 from "protobufjs/minimal";
+import { Timestamp } from "./google/protobuf/timestamp";
 
-export const protobufPackage = 'simple';
+export const protobufPackage = "simple";
 
 export interface ImportedThing {
   createdAt?: Date;
@@ -39,15 +39,17 @@ export const ImportedThing = {
   },
 
   fromJSON(object: any): ImportedThing {
-    return {
-      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-    };
+    return { createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined };
   },
 
   toJSON(message: ImportedThing): unknown {
     const obj: any = {};
     message.createdAt !== undefined && (obj.createdAt = message.createdAt.toISOString());
     return obj;
+  },
+
+  create<I extends Exact<DeepPartial<ImportedThing>, I>>(base?: I): ImportedThing {
+    return ImportedThing.fromPartial(base ?? {});
   },
 
   fromPartial<I extends Exact<DeepPartial<ImportedThing>, I>>(object: I): ImportedThing {
@@ -59,20 +61,14 @@ export const ImportedThing = {
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 type KeysOfUnion<T> = T extends T ? keyof T : never;
-export type Exact<P, I extends P> = P extends Builtin
-  ? P
-  : P & { [K in keyof P]: Exact<P[K], I[K]> } & Record<Exclude<keyof I, KeysOfUnion<P>>, never>;
+export type Exact<P, I extends P> = P extends Builtin ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
   const seconds = date.getTime() / 1_000;
@@ -89,7 +85,7 @@ function fromTimestamp(t: Timestamp): Date {
 function fromJsonTimestamp(o: any): Date {
   if (o instanceof Date) {
     return o;
-  } else if (typeof o === 'string') {
+  } else if (typeof o === "string") {
     return new Date(o);
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));

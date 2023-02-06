@@ -1,9 +1,9 @@
 /* eslint-disable */
-import * as DataLoader from 'dataloader';
-import * as hash from 'object-hash';
-import * as _m0 from 'protobufjs/minimal';
+import * as DataLoader from "dataloader";
+import * as hash from "object-hash";
+import * as _m0 from "protobufjs/minimal";
 
-export const protobufPackage = '';
+export const protobufPackage = "";
 
 export interface NumPair {
   num1: number;
@@ -55,10 +55,7 @@ export const NumPair = {
   },
 
   fromJSON(object: any): NumPair {
-    return {
-      num1: isSet(object.num1) ? Number(object.num1) : 0,
-      num2: isSet(object.num2) ? Number(object.num2) : 0,
-    };
+    return { num1: isSet(object.num1) ? Number(object.num1) : 0, num2: isSet(object.num2) ? Number(object.num2) : 0 };
   },
 
   toJSON(message: NumPair): unknown {
@@ -66,6 +63,10 @@ export const NumPair = {
     message.num1 !== undefined && (obj.num1 = message.num1);
     message.num2 !== undefined && (obj.num2 = message.num2);
     return obj;
+  },
+
+  create<I extends Exact<DeepPartial<NumPair>, I>>(base?: I): NumPair {
+    return NumPair.fromPartial(base ?? {});
   },
 
   fromPartial<I extends Exact<DeepPartial<NumPair>, I>>(object: I): NumPair {
@@ -107,15 +108,17 @@ export const NumSingle = {
   },
 
   fromJSON(object: any): NumSingle {
-    return {
-      num: isSet(object.num) ? Number(object.num) : 0,
-    };
+    return { num: isSet(object.num) ? Number(object.num) : 0 };
   },
 
   toJSON(message: NumSingle): unknown {
     const obj: any = {};
     message.num !== undefined && (obj.num = message.num);
     return obj;
+  },
+
+  create<I extends Exact<DeepPartial<NumSingle>, I>>(base?: I): NumSingle {
+    return NumSingle.fromPartial(base ?? {});
   },
 
   fromPartial<I extends Exact<DeepPartial<NumSingle>, I>>(object: I): NumSingle {
@@ -165,9 +168,7 @@ export const Numbers = {
   },
 
   fromJSON(object: any): Numbers {
-    return {
-      num: Array.isArray(object?.num) ? object.num.map((e: any) => Number(e)) : [],
-    };
+    return { num: Array.isArray(object?.num) ? object.num.map((e: any) => Number(e)) : [] };
   },
 
   toJSON(message: Numbers): unknown {
@@ -178,6 +179,10 @@ export const Numbers = {
       obj.num = [];
     }
     return obj;
+  },
+
+  create<I extends Exact<DeepPartial<Numbers>, I>>(base?: I): Numbers {
+    return Numbers.fromPartial(base ?? {});
   },
 
   fromPartial<I extends Exact<DeepPartial<Numbers>, I>>(object: I): Numbers {
@@ -196,7 +201,9 @@ export interface MathService<Context extends DataLoaders> {
 
 export class MathServiceClientImpl<Context extends DataLoaders> implements MathService<Context> {
   private readonly rpc: Rpc<Context>;
-  constructor(rpc: Rpc<Context>) {
+  private readonly service: string;
+  constructor(rpc: Rpc<Context>, opts?: { service?: string }) {
+    this.service = opts?.service || "MathService";
     this.rpc = rpc;
     this.add = this.add.bind(this);
     this.absoluteValue = this.absoluteValue.bind(this);
@@ -204,32 +211,29 @@ export class MathServiceClientImpl<Context extends DataLoaders> implements MathS
   }
   add(ctx: Context, request: NumPair): Promise<NumSingle> {
     const data = NumPair.encode(request).finish();
-    const promise = this.rpc.request(ctx, 'MathService', 'Add', data);
+    const promise = this.rpc.request(ctx, this.service, "Add", data);
     return promise.then((data) => NumSingle.decode(new _m0.Reader(data)));
   }
 
   absoluteValue(ctx: Context, request: NumSingle): Promise<NumSingle> {
     const data = NumSingle.encode(request).finish();
-    const promise = this.rpc.request(ctx, 'MathService', 'AbsoluteValue', data);
+    const promise = this.rpc.request(ctx, this.service, "AbsoluteValue", data);
     return promise.then((data) => NumSingle.decode(new _m0.Reader(data)));
   }
 
   getDouble(ctx: Context, nu: number): Promise<number> {
-    const dl = ctx.getDataLoader('MathService.BatchDouble', () => {
-      return new DataLoader<number, number>(
-        (num) => {
-          const request = { num };
-          return this.batchDouble(ctx, request).then((res) => res.num);
-        },
-        { cacheKeyFn: hash, ...ctx.rpcDataLoaderOptions }
-      );
+    const dl = ctx.getDataLoader("MathService.BatchDouble", () => {
+      return new DataLoader<number, number>((num) => {
+        const request = { num };
+        return this.batchDouble(ctx, request).then((res) => res.num);
+      }, { cacheKeyFn: hash, ...ctx.rpcDataLoaderOptions });
     });
     return dl.load(nu);
   }
 
   batchDouble(ctx: Context, request: Numbers): Promise<Numbers> {
     const data = Numbers.encode(request).finish();
-    const promise = this.rpc.request(ctx, 'MathService', 'BatchDouble', data);
+    const promise = this.rpc.request(ctx, this.service, "BatchDouble", data);
     return promise.then((data) => Numbers.decode(new _m0.Reader(data)));
   }
 }
@@ -249,20 +253,14 @@ export interface DataLoaders {
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 type KeysOfUnion<T> = T extends T ? keyof T : never;
-export type Exact<P, I extends P> = P extends Builtin
-  ? P
-  : P & { [K in keyof P]: Exact<P[K], I[K]> } & Record<Exclude<keyof I, KeysOfUnion<P>>, never>;
+export type Exact<P, I extends P> = P extends Builtin ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

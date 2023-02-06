@@ -1,7 +1,7 @@
 /* eslint-disable */
-import * as _m0 from 'protobufjs/minimal';
+import * as _m0 from "protobufjs/minimal";
 
-export const protobufPackage = 'angular';
+export const protobufPackage = "angular";
 
 export interface SimpleMessage {
   numberField: number;
@@ -38,15 +38,17 @@ export const SimpleMessage = {
   },
 
   fromJSON(object: any): SimpleMessage {
-    return {
-      numberField: isSet(object.numberField) ? Number(object.numberField) : 0,
-    };
+    return { numberField: isSet(object.numberField) ? Number(object.numberField) : 0 };
   },
 
   toJSON(message: SimpleMessage): unknown {
     const obj: any = {};
     message.numberField !== undefined && (obj.numberField = Math.round(message.numberField));
     return obj;
+  },
+
+  create<I extends Exact<DeepPartial<SimpleMessage>, I>>(base?: I): SimpleMessage {
+    return SimpleMessage.fromPartial(base ?? {});
   },
 
   fromPartial<I extends Exact<DeepPartial<SimpleMessage>, I>>(object: I): SimpleMessage {
@@ -58,20 +60,14 @@ export const SimpleMessage = {
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 type KeysOfUnion<T> = T extends T ? keyof T : never;
-export type Exact<P, I extends P> = P extends Builtin
-  ? P
-  : P & { [K in keyof P]: Exact<P[K], I[K]> } & Record<Exclude<keyof I, KeysOfUnion<P>>, never>;
+export type Exact<P, I extends P> = P extends Builtin ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

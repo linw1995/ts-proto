@@ -1,3 +1,296 @@
+# [1.139.0](https://github.com/stephenh/ts-proto/compare/v1.138.0...v1.139.0) (2023-01-31)
+
+
+### Features
+
+* add support for Struct in NestJS ([#762](https://github.com/stephenh/ts-proto/issues/762)) ([e8c6d8b](https://github.com/stephenh/ts-proto/commit/e8c6d8ba7bee902dbbda0c36dd9f6accfd222542))
+
+
+### Performance Improvements
+
+* generate switch statement for oneof union encode ([#767](https://github.com/stephenh/ts-proto/issues/767)) ([c3fd1e3](https://github.com/stephenh/ts-proto/commit/c3fd1e3e487d1da3e8c792354d6491cadb067ff4))
+
+# [1.138.0](https://github.com/stephenh/ts-proto/compare/v1.137.2...v1.138.0) (2023-01-10)
+
+
+### Features
+
+* add create utility function to message defintions ([#760](https://github.com/stephenh/ts-proto/issues/760)) ([44fc7b2](https://github.com/stephenh/ts-proto/commit/44fc7b23ae72ec9c4fca86bee9a9774be097c058))
+
+## [1.137.2](https://github.com/stephenh/ts-proto/compare/v1.137.1...v1.137.2) (2023-01-09)
+
+
+### Bug Fixes
+
+* repeated uint64 fields do not encode properly with bigint option ([#751](https://github.com/stephenh/ts-proto/issues/751)) ([dcdd7e2](https://github.com/stephenh/ts-proto/commit/dcdd7e23479721d127138eeda8b143c100a0730a))
+
+## [1.137.1](https://github.com/stephenh/ts-proto/compare/v1.137.0...v1.137.1) (2023-01-07)
+
+
+### Bug Fixes
+
+* grpc-js timestamp conversion ([#755](https://github.com/stephenh/ts-proto/issues/755)) ([9d24bd3](https://github.com/stephenh/ts-proto/commit/9d24bd39d0fbebf636ba4aaf6567988bc177a413)), closes [#754](https://github.com/stephenh/ts-proto/issues/754)
+
+# [1.137.0](https://github.com/stephenh/ts-proto/compare/v1.136.1...v1.137.0) (2022-12-29)
+
+
+### Bug Fixes
+
+* Additional fix for structs with useMapType. ([#743](https://github.com/stephenh/ts-proto/issues/743)) ([3264b0f](https://github.com/stephenh/ts-proto/commit/3264b0f4a98f3e00b262ce8af7927b0bc0375160))
+* Fix codegen for google.protobuf.Struct with useMapType=true ([#740](https://github.com/stephenh/ts-proto/issues/740)) ([0647151](https://github.com/stephenh/ts-proto/commit/0647151b356d7b22f8baf72b70f5a0353259b404))
+
+
+### Features
+
+* added bigint force long option ([#742](https://github.com/stephenh/ts-proto/issues/742)) ([3964e57](https://github.com/stephenh/ts-proto/commit/3964e575a6bdf90bbde937bcc71ac1f0255831b3))
+
+## [1.136.1](https://github.com/stephenh/ts-proto/compare/v1.136.0...v1.136.1) (2022-12-16)
+
+
+### Bug Fixes
+
+* Avoid namespace conflict on globalThis. ([#735](https://github.com/stephenh/ts-proto/issues/735)) ([71e919e](https://github.com/stephenh/ts-proto/commit/71e919e7de4a2482e9389a5cbfd76853a1db73fb)), closes [#732](https://github.com/stephenh/ts-proto/issues/732)
+
+# [1.136.0](https://github.com/stephenh/ts-proto/compare/v1.135.3...v1.136.0) (2022-12-14)
+
+
+### Features
+
+* RPC: add useAbortSignal option ([#731](https://github.com/stephenh/ts-proto/issues/731)) ([69313a7](https://github.com/stephenh/ts-proto/commit/69313a7a0f19c41c61824081e12ed680fda32b74)), closes [#730](https://github.com/stephenh/ts-proto/issues/730)
+
+## [1.135.3](https://github.com/stephenh/ts-proto/compare/v1.135.2...v1.135.3) (2022-12-12)
+
+
+### Bug Fixes
+
+* return grpc-web response without toObject method ([#728](https://github.com/stephenh/ts-proto/issues/728)) ([7431aa8](https://github.com/stephenh/ts-proto/commit/7431aa8e5718ad8a8fe48651798f203995bf705b)), closes [stephenh/ts-proto#636](https://github.com/stephenh/ts-proto/issues/636)
+
+## [1.135.2](https://github.com/stephenh/ts-proto/compare/v1.135.1...v1.135.2) (2022-12-09)
+
+
+### Bug Fixes
+
+* Fix buf publishing with yarn v3. ([#726](https://github.com/stephenh/ts-proto/issues/726)) ([e125d2b](https://github.com/stephenh/ts-proto/commit/e125d2bad21acfb27579b1ce252151678a91f2bc))
+
+## [1.135.1](https://github.com/stephenh/ts-proto/compare/v1.135.0...v1.135.1) (2022-12-09)
+
+
+### Bug Fixes
+
+* Add functionality for grpc camel case to respect splitting by word ([#721](https://github.com/stephenh/ts-proto/issues/721)) ([4af040c](https://github.com/stephenh/ts-proto/commit/4af040c233792862db85c07d01d1b210a13cae2c)), closes [#722](https://github.com/stephenh/ts-proto/issues/722)
+
+# [1.135.0](https://github.com/stephenh/ts-proto/compare/v1.134.0...v1.135.0) (2022-11-26)
+
+
+### Features
+
+* Bump ts poet for perf increase ([#714](https://github.com/stephenh/ts-proto/issues/714)) ([0068dc8](https://github.com/stephenh/ts-proto/commit/0068dc8c8c34263ac4a7bc5866408453fc2c8b11))
+
+# [1.134.0](https://github.com/stephenh/ts-proto/compare/v1.133.0...v1.134.0) (2022-11-25)
+
+
+### Features
+
+* conditionally add "Service" to nice-grpc's generated service interface name ([#710](https://github.com/stephenh/ts-proto/issues/710)) ([7c39cc0](https://github.com/stephenh/ts-proto/commit/7c39cc0729403dcb63ef353357fae3548b5a6667))
+
+# [1.133.0](https://github.com/stephenh/ts-proto/compare/v1.132.1...v1.133.0) (2022-11-20)
+
+
+### Features
+
+* optional one of properties ([#705](https://github.com/stephenh/ts-proto/issues/705)) ([4c6cbb0](https://github.com/stephenh/ts-proto/commit/4c6cbb0ff71e053c634732e295ed812901d368ae))
+
+## [1.132.1](https://github.com/stephenh/ts-proto/compare/v1.132.0...v1.132.1) (2022-11-15)
+
+
+### Bug Fixes
+
+* use-readonly-types for oneof unions ([#706](https://github.com/stephenh/ts-proto/issues/706)) ([bc854ba](https://github.com/stephenh/ts-proto/commit/bc854bac083b8818d5fad77bc2e7995cfb01798e))
+
+# [1.132.0](https://github.com/stephenh/ts-proto/compare/v1.131.2...v1.132.0) (2022-11-15)
+
+
+### Features
+
+* change channel options to client options in generate grpc/js ([#704](https://github.com/stephenh/ts-proto/issues/704)) ([c4ac8ac](https://github.com/stephenh/ts-proto/commit/c4ac8ac12aaee0c897985f944ffe3f122e28eba9))
+
+## [1.131.2](https://github.com/stephenh/ts-proto/compare/v1.131.1...v1.131.2) (2022-11-13)
+
+
+### Bug Fixes
+
+* Adding a failing regression test for wrapper types ([#689](https://github.com/stephenh/ts-proto/issues/689)) ([bde2e28](https://github.com/stephenh/ts-proto/commit/bde2e28ad70bf05ebb21effcdb1caad7217c8291))
+
+## [1.131.1](https://github.com/stephenh/ts-proto/compare/v1.131.0...v1.131.1) (2022-11-13)
+
+
+### Bug Fixes
+
+* Extend `global.Error` to avoid import collisions with Error proto msgs ([#699](https://github.com/stephenh/ts-proto/issues/699)) ([e9d8f91](https://github.com/stephenh/ts-proto/commit/e9d8f9123b7b3c5e274035fa3f2644b370915181))
+
+# [1.131.0](https://github.com/stephenh/ts-proto/compare/v1.130.0...v1.131.0) (2022-10-25)
+
+
+### Features
+
+* option useSnakeTypeName ([#694](https://github.com/stephenh/ts-proto/issues/694)) ([ad73ff9](https://github.com/stephenh/ts-proto/commit/ad73ff9341d0d593156d10b5d96c4a47afdc802d))
+
+# [1.130.0](https://github.com/stephenh/ts-proto/compare/v1.129.0...v1.130.0) (2022-10-22)
+
+
+### Features
+
+* support `useReadonlyTypes` option ([#691](https://github.com/stephenh/ts-proto/issues/691)) ([4b87334](https://github.com/stephenh/ts-proto/commit/4b8733452fb59cea3b9fb4721159b97e6df59854))
+
+# [1.129.0](https://github.com/stephenh/ts-proto/compare/v1.128.0...v1.129.0) (2022-10-16)
+
+
+### Features
+
+* support `useMapType` option ([#686](https://github.com/stephenh/ts-proto/issues/686)) ([f2e80ab](https://github.com/stephenh/ts-proto/commit/f2e80ab3ecc3a438ecbd88b2170b8119ebadfcd3))
+
+# [1.128.0](https://github.com/stephenh/ts-proto/compare/v1.127.0...v1.128.0) (2022-10-13)
+
+
+### Features
+
+* added nestJsTimestampTypeWrapper ([#567](https://github.com/stephenh/ts-proto/issues/567)) ([59d451e](https://github.com/stephenh/ts-proto/commit/59d451e2857856ff54a3afe03ae115a1824df66f))
+
+# [1.127.0](https://github.com/stephenh/ts-proto/compare/v1.126.1...v1.127.0) (2022-10-12)
+
+
+### Features
+
+* **client:** allow overriding the service identifier ([#683](https://github.com/stephenh/ts-proto/issues/683)) ([10c7c99](https://github.com/stephenh/ts-proto/commit/10c7c99b1f43705d640ab1e602a7c1799e31ac08))
+* Import CallContext and CallOptions as type ([#684](https://github.com/stephenh/ts-proto/issues/684)) ([8b388f6](https://github.com/stephenh/ts-proto/commit/8b388f6c9f57dac34ca5836a4313d8247bb0fceb)), closes [#677](https://github.com/stephenh/ts-proto/issues/677)
+
+## [1.126.1](https://github.com/stephenh/ts-proto/compare/v1.126.0...v1.126.1) (2022-09-21)
+
+
+### Bug Fixes
+
+* **options:** initializes M opt to empty object ([#673](https://github.com/stephenh/ts-proto/issues/673)) ([cb76c5e](https://github.com/stephenh/ts-proto/commit/cb76c5ea565081d610be08451e452269c5d3837c))
+
+# [1.126.0](https://github.com/stephenh/ts-proto/compare/v1.125.0...v1.126.0) (2022-09-21)
+
+
+### Features
+
+* **options:** adds protoc-gen-go-like M option ([#672](https://github.com/stephenh/ts-proto/issues/672)) ([9304e5d](https://github.com/stephenh/ts-proto/commit/9304e5db7172db53530fb08fe0486f56b2a17181)), closes [#596](https://github.com/stephenh/ts-proto/issues/596)
+
+# [1.125.0](https://github.com/stephenh/ts-proto/compare/v1.124.0...v1.125.0) (2022-09-03)
+
+
+### Features
+
+* omit optional fields in base instance ([#669](https://github.com/stephenh/ts-proto/issues/669)) ([47b60aa](https://github.com/stephenh/ts-proto/commit/47b60aab95533542cf762f152138f7ab4234de88))
+
+# [1.124.0](https://github.com/stephenh/ts-proto/compare/v1.123.1...v1.124.0) (2022-09-03)
+
+
+### Features
+
+* Bump ts poet for dprint perf increase ([#668](https://github.com/stephenh/ts-proto/issues/668)) ([961d388](https://github.com/stephenh/ts-proto/commit/961d388fa7dc7cb25fbe700526cbd481f3a48ae1))
+
+## [1.123.1](https://github.com/stephenh/ts-proto/compare/v1.123.0...v1.123.1) (2022-08-27)
+
+
+### Bug Fixes
+
+* Bump ts-poet to use @dprint/typescript. ([#662](https://github.com/stephenh/ts-proto/issues/662)) ([84b64f4](https://github.com/stephenh/ts-proto/commit/84b64f4219f96199e8722678354430fbf00cebba))
+
+# [1.123.0](https://github.com/stephenh/ts-proto/compare/v1.122.0...v1.123.0) (2022-08-27)
+
+
+### Features
+
+* Bump ts-poet for dprint, also use tsx ([#660](https://github.com/stephenh/ts-proto/issues/660)) ([348a465](https://github.com/stephenh/ts-proto/commit/348a4651b42d5ff64fd07e36ef9ca7d7e76f4277))
+
+# [1.122.0](https://github.com/stephenh/ts-proto/compare/v1.121.6...v1.122.0) (2022-08-15)
+
+
+### Features
+
+* **Grpc-Web:** Add & export GrpcWebError type ([#593](https://github.com/stephenh/ts-proto/issues/593)) ([645987d](https://github.com/stephenh/ts-proto/commit/645987d023e666290e87086f5a0770c34e2fe978))
+
+## [1.121.6](https://github.com/stephenh/ts-proto/compare/v1.121.5...v1.121.6) (2022-08-14)
+
+
+### Bug Fixes
+
+* Use jsonName even with snakeToCamel=false. ([#653](https://github.com/stephenh/ts-proto/issues/653)) ([1144886](https://github.com/stephenh/ts-proto/commit/1144886ef43eaf97b780c7aafb2c123fd49b3fe5)), closes [#635](https://github.com/stephenh/ts-proto/issues/635)
+
+## [1.121.5](https://github.com/stephenh/ts-proto/compare/v1.121.4...v1.121.5) (2022-08-08)
+
+
+### Bug Fixes
+
+* remove Record word conflict ([#638](https://github.com/stephenh/ts-proto/issues/638)) ([5664d09](https://github.com/stephenh/ts-proto/commit/5664d097ac33da423b0f4e79f962fd71912358a0))
+* resolve import collisions for services ([#651](https://github.com/stephenh/ts-proto/issues/651)) ([ee0296f](https://github.com/stephenh/ts-proto/commit/ee0296ffe087665b54bac714e964e7243010fb22))
+
+## [1.121.4](https://github.com/stephenh/ts-proto/compare/v1.121.3...v1.121.4) (2022-08-07)
+
+
+### Performance Improvements
+
+* Faster base64FromBytes & bytesFromBase64 on Node.JS ([#649](https://github.com/stephenh/ts-proto/issues/649)) ([82ab341](https://github.com/stephenh/ts-proto/commit/82ab341557fba1a4933c4613d5c20dbf897905fa))
+
+## [1.121.3](https://github.com/stephenh/ts-proto/compare/v1.121.2...v1.121.3) (2022-08-06)
+
+
+### Bug Fixes
+
+* Use underscore separator in snakeToCamel. ([#648](https://github.com/stephenh/ts-proto/issues/648)) ([b374910](https://github.com/stephenh/ts-proto/commit/b374910a8fb1d0efe6c5c5322f8788cc3cc1ca6c))
+
+## [1.121.2](https://github.com/stephenh/ts-proto/compare/v1.121.1...v1.121.2) (2022-08-06)
+
+
+### Bug Fixes
+
+* Fix push_to_buf_registry check. ([22ac914](https://github.com/stephenh/ts-proto/commit/22ac914cd8626258ceb35fd435b899a819518988))
+
+## [1.121.1](https://github.com/stephenh/ts-proto/compare/v1.121.0...v1.121.1) (2022-07-28)
+
+
+### Bug Fixes
+
+* Revert "feat: support grpc-web client straming ([#617](https://github.com/stephenh/ts-proto/issues/617))" ([#632](https://github.com/stephenh/ts-proto/issues/632)) ([2f4ecc7](https://github.com/stephenh/ts-proto/commit/2f4ecc7434df6b8f2ff08b929f9032170b04e858))
+
+# [1.121.0](https://github.com/stephenh/ts-proto/compare/v1.120.0...v1.121.0) (2022-07-28)
+
+
+### Features
+
+* Add use-numeric-enum-json option. ([#625](https://github.com/stephenh/ts-proto/issues/625)) ([cd53d8c](https://github.com/stephenh/ts-proto/commit/cd53d8cacd6b4b8fa6517242020b216dd18eebdf))
+
+# [1.120.0](https://github.com/stephenh/ts-proto/compare/v1.119.0...v1.120.0) (2022-07-21)
+
+
+### Features
+
+* add meta-data to stream error ([#620](https://github.com/stephenh/ts-proto/issues/620)) ([b68f301](https://github.com/stephenh/ts-proto/commit/b68f301b5fb4222a3fce676a7e5036cf00e77e11))
+
+# [1.119.0](https://github.com/stephenh/ts-proto/compare/v1.118.0...v1.119.0) (2022-07-21)
+
+
+### Features
+
+* support grpc-web client straming ([#617](https://github.com/stephenh/ts-proto/issues/617)) ([d3e7f1f](https://github.com/stephenh/ts-proto/commit/d3e7f1f4aac12db87c54d6357e557a351c96a2ca))
+
+# [1.118.0](https://github.com/stephenh/ts-proto/compare/v1.117.1...v1.118.0) (2022-07-19)
+
+
+### Features
+
+* add dynamic upStreamCodes option ([#618](https://github.com/stephenh/ts-proto/issues/618)) ([3091023](https://github.com/stephenh/ts-proto/commit/309102313273e09aef3a8480f4b46360ad82adaa))
+
+## [1.117.1](https://github.com/stephenh/ts-proto/compare/v1.117.0...v1.117.1) (2022-07-16)
+
+
+### Bug Fixes
+
+* import protobufjs/minimal with importSuffix ([#616](https://github.com/stephenh/ts-proto/issues/616)) ([b86291c](https://github.com/stephenh/ts-proto/commit/b86291c58b1cb9d4064944a6371e928b564aef7f))
+
 # [1.117.0](https://github.com/stephenh/ts-proto/compare/v1.116.1...v1.117.0) (2022-07-05)
 
 
